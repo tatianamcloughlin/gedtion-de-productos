@@ -1,0 +1,16 @@
+{
+    "11111111": {
+        "nombre": "Buzo",
+        "cantidad_en_stock": 2,
+        "precio": 34.0,
+        "codigo_de_productos": 11111111,
+        "rango_etario": "Bebes"
+    },
+    "66666666": {
+        "nombre": "Nose",
+        "cantidad_en_stock": 2,
+        "precio": 4000.0,
+        "codigo_de_productos": 66666666,
+        "rango_etario": "Kids"
+    }
+}
