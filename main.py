@@ -106,7 +106,7 @@ if __name__ == "__main__":
     gestion = gestionProductos(archivo_productos)
 
     while True:
-        limpiar_pantalla()
+        #limpiar_pantalla() #limpia antes de mostrar el mensaje de error
         mostrar_menu()
         opcion = input('Seleccione una opción: ')
 
