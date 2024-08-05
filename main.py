@@ -39,7 +39,7 @@ def agregar_producto(gestion, tipo_producto):
         nombre = input('Ingrese nombre del producto: ')
         precio = input('Ingrese precio del producto: ')
         cantidad_en_stock = input('Ingrese cantidad del producto en stock: ')
-        codigo_de_productos =input('Ingrese codigo del producto: ')#no gusrda el numero '0'
+        codigo_de_productos =input('Ingrese codigo del producto: ')
         
 
         if tipo_producto == '1':
@@ -72,18 +72,31 @@ def buscar_producto_por_codigo(gestion):
 
 
 def actualizar_precio_producto(gestion):
-    codigo= input('Ingrese el codigo del producto para actualizar precio: ')
-    precio_nuevo = input('Ingrese el precio nuevo: ')
-    gestion.actualizar_precio(codigo, precio_nuevo)
-    gestion.mostrar_producto(codigo)
-    input('Presione enter para continuar...')
+    while True:
+        codigo= input('Ingrese el codigo del producto para actualizar precio: ')
+        try:
+            precio_nuevo = float(input('Ingrese el precio nuevo: '))
+            gestion.actualizar_precio(codigo, precio_nuevo)
+            gestion.mostrar_producto(codigo)
+            input('Presione enter para continuar...')
+        except ValueError: 
+            print ('valor no valido, ingrese nuevamente: ')
+        else:
+            break
+    
 
 def actualizar_stock_producto(gestion):
-    codigo= input('Ingrese el codigo del producto para actualizar Stock: ')
-    nuevo_stock = input('Ingrese el stock nuevo: ')
-    gestion.actualizar_stock(codigo, nuevo_stock)
-    gestion.mostrar_producto(codigo)
-    input('Presione enter para continuar...')
+    while True:
+        codigo= input('Ingrese el codigo del producto para actualizar Stock: ')
+        try:
+            nuevo_stock = int(input('Ingrese el stock nuevo: '))
+            gestion.actualizar_stock(codigo, nuevo_stock)
+            gestion.mostrar_producto(codigo)
+            input('Presione enter para continuar...')
+        except ValueError: 
+            print ('valor no valido, ingrese nuevamente: ')
+        else:
+            break
 
 def eliminar_producto_por_codigo(gestion):
     codigo = input('Ingrese el codigo del colaborador a eliminar: ')
@@ -106,8 +119,9 @@ if __name__ == "__main__":
     gestion = gestionProductos(archivo_productos)
 
     while True:
-        #limpiar_pantalla() #limpia antes de mostrar el mensaje de error
+        
         mostrar_menu()
+       
         opcion = input('Seleccione una opción: ')
 
         if opcion == '1' or opcion == '2':
@@ -131,5 +145,6 @@ if __name__ == "__main__":
         else:
             print('Opción no válida. Por favor, seleccione una opción válida (1-7)')
         
+        limpiar_pantalla() 
         
        

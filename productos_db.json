@@ -1,8 +1,8 @@
 {
     "11111111": {
         "nombre": "Buzo",
-        "cantidad_en_stock": 2,
-        "precio": 34.0,
+        "cantidad_en_stock": 5,
+        "precio": 5.0,
         "codigo_de_productos": 11111111,
         "rango_etario": "Bebes"
     },

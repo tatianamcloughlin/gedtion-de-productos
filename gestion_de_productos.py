@@ -49,10 +49,10 @@ class Producto :
         try:
             precio_num = float(precio)
             if precio_num <= 0 :
-                raise ValueError("El precio o debe ser numéro positivo.")#no anda, no se muestra(salta el exept)
+                raise ValueError("El precio o debe ser numéro positivo.")
             return precio_num
         except ValueError: 
-            raise ValueError("el precio debe ser un numero.")
+            raise ValueError("el precio debe ser un numero positivo.")
         
  
     def validar_codigo_de_productos(self,codigo_de_productos):
@@ -61,7 +61,7 @@ class Producto :
             if len(str(codigo_de_productos)) != 8 :
                 raise ValueError(f"el codigo ingresado debe tener 8 numeros")
             if codigo_de_productos_num <= 0:
-                raise ValueError("El codigo del producto debe ser un numéro positivo.") #no anda, no se muestra(salta el exept)
+                raise ValueError("El codigo del producto debe ser un numéro positivo.") 
                 
             return codigo_de_productos_num
         except ValueError:
@@ -72,7 +72,7 @@ class Producto :
         try:
             cantidad = int(cantidad_en_stock)
             if cantidad <=0:
-               raise ValueError ("cantidad en stock ingresada no valida ") #no anda, no se muestra(salta el exept)
+               raise ValueError ("cantidad en stock ingresada no valida ") 
             return cantidad 
         except ValueError: 
             raise ValueError ("la cantidad en stock debe ser un numero .") 
@@ -96,8 +96,7 @@ class productosParaInfantes(Producto):
    
 
     @property
-    def rango_etario(self):
-        #return self.__rango_etario
+    def rango_etario(self):     
         if self.__rango_etario == "0":
             return "Bebes"
         elif self.__rango_etario == "1":
@@ -107,7 +106,6 @@ class productosParaInfantes(Producto):
         
     def validar_rango_etario(self, rango_etario):
         try:
-            #rango = int(rango_etario)
             if rango_etario not in ["0", "1", "2", "Bebes", "Kids", "Juniors"]:
                 raise ValueError("La opción ingresada no corresponde a ningún rango etario existente")
             return rango_etario
@@ -224,7 +222,7 @@ class gestionProductos:
             datos = self.leer_datos() 
             n_precio = float(nuevo_precio)
             if codigo_de_producto in datos.keys():
-                datos[codigo_de_producto]['precio'] = n_precio #como valido, si ingreso una letra se rompe el codigo xq no puede convertirlo en float, no llega a la validacion_codigo_de_producto?
+                datos[codigo_de_producto]['precio'] = n_precio 
                 self.guardar_datos(datos)
                 print(f'Precio actualizado para el producto de codigo:{codigo_de_producto}')
             else:
@@ -252,7 +250,7 @@ class gestionProductos:
             datos = self.leer_datos()
             n_stock = int(nuevo_stock)
             if codigo_de_producto in datos.keys():
-                datos[codigo_de_producto]['cantidad_en_stock'] = n_stock #como valido, si ingreso una letra se rompe el codigo xq no puede convertirlo en int, no llega a la validacion_precio?
+                datos[codigo_de_producto]['cantidad_en_stock'] = n_stock 
                 self.guardar_datos(datos)
                 print(f'Stock actualizado para el producto de codigo:{codigo_de_producto}')
             else:
